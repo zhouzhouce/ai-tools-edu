@@ -20,6 +20,12 @@
 # production
 /build
 
+# database
+/data/
+
+# payload
+/src/payload-types.ts
+
 # misc
 .DS_Store
 *.pem
