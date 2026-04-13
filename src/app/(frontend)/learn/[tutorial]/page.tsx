@@ -14,6 +14,9 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useParams } from "next/navigation";
+import { useTranslation } from "@/i18n/LanguageContext";
+import { PromptPlayground } from "@/components/sandbox/PromptPlayground";
+import { CodePlayground } from "@/components/sandbox/CodePlayground";
 
 interface TutorialStep {
   blockType: string;
@@ -27,6 +30,7 @@ interface TutorialStep {
   expectedOutput?: string;
   hints?: { hint: string }[];
   quizQuestions?: unknown;
+  sandboxConfig?: Record<string, unknown>;
   // tip step
   content_type?: string;
 }
@@ -130,49 +134,18 @@ export default function TutorialPage() {
           <div>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">{step.title}</h2>
             {step.type === "prompt" && (
-              <div className="space-y-4">
-                <div className="rounded-xl bg-gray-900 p-6">
-                  <p className="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">
-                    Prompt Playground
-                  </p>
-                  <textarea
-                    className="w-full bg-gray-800 text-gray-100 rounded-lg p-4 text-sm font-mono resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    rows={4}
-                    defaultValue={step.promptTemplate || ""}
-                    placeholder="Type your prompt here..."
-                  />
-                  <button className="mt-3 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition-colors">
-                    Run Prompt
-                  </button>
-                </div>
-                {step.expectedOutput && (
-                  <div className="rounded-xl bg-green-50 border border-green-200 p-4">
-                    <p className="text-xs font-medium text-green-600 mb-1">Expected Output Pattern:</p>
-                    <p className="text-sm text-green-700">{step.expectedOutput}</p>
-                  </div>
-                )}
-                {step.hints && step.hints.length > 0 && (
-                  <details className="rounded-xl bg-amber-50 border border-amber-200 p-4">
-                    <summary className="text-sm font-medium text-amber-700 cursor-pointer">
-                      Need a hint?
-                    </summary>
-                    <ul className="mt-2 space-y-1">
-                      {step.hints.map((h, i) => (
-                        <li key={i} className="text-sm text-amber-600">
-                          {h.hint}
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                )}
-              </div>
+              <PromptPlayground
+                template={step.promptTemplate || ""}
+                expectedOutput={step.expectedOutput}
+                hints={step.hints}
+              />
             )}
             {step.type === "sandbox" && (
-              <div className="rounded-xl bg-gray-100 border border-gray-200 p-8 text-center">
-                <p className="text-gray-500">
-                  Interactive code sandbox will be available in Phase 2
-                </p>
-              </div>
+              <CodePlayground
+                initialCode={typeof step.sandboxConfig === 'object' && step.sandboxConfig !== null && 'initialCode' in step.sandboxConfig ? (step.sandboxConfig as {initialCode: string}).initialCode : '// Write your code here\nconsole.log("Hello, AI!");'}
+                language={typeof step.sandboxConfig === 'object' && step.sandboxConfig !== null && 'language' in step.sandboxConfig ? (step.sandboxConfig as {language: string}).language : 'javascript'}
+                simulatedOutput={typeof step.sandboxConfig === 'object' && step.sandboxConfig !== null && 'simulatedOutput' in step.sandboxConfig ? (step.sandboxConfig as {simulatedOutput: string}).simulatedOutput : '> Hello, AI!'}
+              />
             )}
             {step.type === "quiz" && (
               <div className="rounded-xl bg-gray-100 border border-gray-200 p-8 text-center">

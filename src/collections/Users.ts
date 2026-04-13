@@ -76,6 +76,23 @@ export const Users: CollectionConfig = {
       ],
     },
     {
+      name: "scenario",
+      type: "textarea",
+      admin: {
+        description: "User's specific AI use case scenario (from onboarding)",
+      },
+    },
+    {
+      name: "weeklyTimeBudget",
+      type: "select",
+      options: [
+        { label: "15 minutes", value: "15min" },
+        { label: "30 minutes", value: "30min" },
+        { label: "1 hour", value: "1h" },
+        { label: "2+ hours", value: "2h+" },
+      ],
+    },
+    {
       name: "completedOnboarding",
       type: "checkbox",
       defaultValue: false,

@@ -11,6 +11,10 @@ import { Categories } from "./src/collections/Categories";
 import { Tools } from "./src/collections/Tools";
 import { Tutorials } from "./src/collections/Tutorials";
 import { Workflows } from "./src/collections/Workflows";
+import { UserProgress } from "./src/collections/UserProgress";
+import { LearningPlans } from "./src/collections/LearningPlans";
+import { Badges } from "./src/collections/Badges";
+import { UserBadges } from "./src/collections/UserBadges";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,7 +26,7 @@ export default buildConfig({
       titleSuffix: " | AI Tools Edu",
     },
   },
-  collections: [Users, Media, Categories, Tools, Tutorials, Workflows],
+  collections: [Users, Media, Categories, Tools, Tutorials, Workflows, UserProgress, LearningPlans, Badges, UserBadges],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "default-secret-change-me",
   typescript: {

@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   XCircle,
   Clock,
+  GraduationCap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -103,17 +104,41 @@ export default async function ToolDetailPage({ params }: Props) {
           </div>
         </div>
 
-        {tool.websiteUrl && (
-          <div className="mt-6 pt-6 border-t border-gray-100">
-            <a
-              href={tool.websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors"
-            >
-              Visit Website
-              <ExternalLink className="h-4 w-4" />
-            </a>
+        {(tool.websiteUrl || (tool as Record<string, unknown>).officialDocsUrl || (tool as Record<string, unknown>).officialTutorialUrl) && (
+          <div className="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-3">
+            {tool.websiteUrl && (
+              <a
+                href={tool.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors"
+              >
+                Visit Website
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            )}
+            {(tool as Record<string, unknown>).officialDocsUrl && (
+              <a
+                href={(tool as Record<string, unknown>).officialDocsUrl as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 ring-1 ring-gray-200 hover:bg-gray-50 transition-colors"
+              >
+                <BookOpen className="h-4 w-4 text-indigo-500" />
+                Official Docs
+              </a>
+            )}
+            {(tool as Record<string, unknown>).officialTutorialUrl && (
+              <a
+                href={(tool as Record<string, unknown>).officialTutorialUrl as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 ring-1 ring-gray-200 hover:bg-gray-50 transition-colors"
+              >
+                <GraduationCap className="h-4 w-4 text-green-500" />
+                Official Tutorial
+              </a>
+            )}
           </div>
         )}
       </div>

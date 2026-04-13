@@ -87,6 +87,42 @@ export const Tools: CollectionConfig = {
       type: "text",
     },
     {
+      name: "officialDocsUrl",
+      type: "text",
+      admin: {
+        description: "URL to the tool's official documentation",
+      },
+    },
+    {
+      name: "officialTutorialUrl",
+      type: "text",
+      admin: {
+        description: "URL to the tool's official getting started guide",
+      },
+    },
+    {
+      name: "taglineZh",
+      type: "text",
+      admin: {
+        description: "Chinese translation of the tagline",
+      },
+    },
+    {
+      name: "difficultyTier",
+      type: "select",
+      required: true,
+      defaultValue: "starter",
+      options: [
+        { label: "AI Starter - No technical background needed", value: "starter" },
+        { label: "AI Builder - Prompt engineering & API concepts", value: "builder" },
+        { label: "AI Developer - Programming skills required", value: "developer" },
+      ],
+      admin: {
+        position: "sidebar",
+        description: "Tool complexity tier",
+      },
+    },
+    {
       name: "difficulty",
       type: "select",
       required: true,

@@ -29,6 +29,16 @@ export const Categories: CollectionConfig = {
       type: "textarea",
     },
     {
+      name: "nameZh",
+      type: "text",
+      admin: { description: "Chinese name" },
+    },
+    {
+      name: "descriptionZh",
+      type: "textarea",
+      admin: { description: "Chinese description" },
+    },
+    {
       name: "icon",
       type: "text",
       admin: {
