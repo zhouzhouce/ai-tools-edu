@@ -10,6 +10,8 @@ import {
   Bot,
   Briefcase,
   GraduationCap,
+  Cpu,
+  Blocks,
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -25,6 +27,8 @@ const iconMap: Record<string, LucideIcon> = {
   bot: Bot,
   briefcase: Briefcase,
   "graduation-cap": GraduationCap,
+  cpu: Cpu,
+  blocks: Blocks,
 };
 
 interface Category {

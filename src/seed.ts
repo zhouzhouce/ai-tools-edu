@@ -11,6 +11,8 @@ const categoriesData = [
   { name: "Automation", slug: "automation", icon: "bot", color: "#14b8a6", order: 8, description: "Automate workflows and repetitive tasks with AI" },
   { name: "Business Tools", slug: "business", icon: "briefcase", color: "#f59e0b", order: 9, description: "AI tools for business operations, presentations, and productivity" },
   { name: "Education", slug: "education", icon: "graduation-cap", color: "#06b6d4", order: 10, description: "AI tools for learning, tutoring, and educational content" },
+  { name: "AI Agents", slug: "ai-agents", icon: "cpu", color: "#8b5cf6", order: 11, description: "Autonomous AI agents that execute tasks, manage workflows, and operate tools on your behalf" },
+  { name: "App Building", slug: "app-building", icon: "blocks", color: "#0ea5e9", order: 12, description: "AI-powered platforms to build full-stack apps from natural language prompts (Vibe Coding)" },
 ];
 
 const toolsData = [
@@ -51,6 +53,26 @@ const toolsData = [
   // Education
   { name: "Khan Academy Khanmigo", slug: "khanmigo", tagline: "AI tutor from Khan Academy for personalized learning assistance", taglineZh: "可汗学院的AI导师，个性化学习辅导", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "education", trending: false, trendingScore: 55, websiteUrl: "https://khanacademy.org", officialDocsUrl: "https://support.khanacademy.org", officialTutorialUrl: "https://support.khanacademy.org", pros: ["Pedagogically sound", "Safe for students", "Guides rather than gives answers"], cons: ["Limited subject coverage", "Requires Khan Academy"] },
   { name: "Duolingo Max", slug: "duolingo-max", tagline: "AI-powered language learning with roleplay and explanations", taglineZh: "AI语言学习，支持角色扮演和解释", pricing: "paid" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "education", trending: false, trendingScore: 50, websiteUrl: "https://duolingo.com", officialDocsUrl: "https://support.duolingo.com", officialTutorialUrl: "https://support.duolingo.com", pros: ["Fun and engaging", "AI roleplay conversations", "Many languages"], cons: ["Subscription required", "AI features limited to some languages"] },
+  // AI Agents
+  { name: "OpenClaw", slug: "openclaw", tagline: "Open-source autonomous AI agent that executes tasks via messaging platforms", taglineZh: "开源自主AI Agent，通过消息平台执行任务", pricing: "free" as const, difficulty: "intermediate" as const, difficultyTier: "developer" as const, category: "ai-agents", trending: true, trendingScore: 98, websiteUrl: "https://github.com/openclaw/openclaw", officialDocsUrl: "https://github.com/openclaw/openclaw", officialTutorialUrl: "https://github.com/openclaw/openclaw/wiki", pros: ["247K GitHub stars", "True task automation via WhatsApp/Slack", "100+ prebuilt skills", "Open source & self-hosted", "Runs locally for privacy"], cons: ["Deep system access poses security risks", "Requires isolated machine for safety", "Complex setup for beginners", "Malicious extensions possible"] },
+  { name: "Devin", slug: "devin", tagline: "The first AI software engineer that autonomously completes coding tasks end-to-end", taglineZh: "首个AI软件工程师，端到端自主完成编程任务", pricing: "paid" as const, difficulty: "advanced" as const, difficultyTier: "developer" as const, category: "ai-agents", trending: true, trendingScore: 85, websiteUrl: "https://devin.ai", officialDocsUrl: "https://docs.devin.ai", officialTutorialUrl: "https://docs.devin.ai/getting-started", pros: ["Fully autonomous coding", "Handles GitHub issues end-to-end", "Plans, codes, tests, and deploys", "Learns from codebase context"], cons: ["Expensive enterprise pricing", "Can make unexpected changes", "Needs careful supervision", "Limited to supported languages"] },
+  // App Building (Vibe Coding)
+  { name: "Bolt.new", slug: "bolt-new", tagline: "Browser-based AI full-stack development platform with zero local setup", taglineZh: "基于浏览器的AI全栈开发平台，零本地配置", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "builder" as const, category: "app-building", trending: true, trendingScore: 88, websiteUrl: "https://bolt.new", officialDocsUrl: "https://docs.bolt.new", officialTutorialUrl: "https://docs.bolt.new/getting-started", pros: ["Zero setup, runs in browser", "Supports 10+ frameworks", "WebContainer technology", "$40M ARR proven platform"], cons: ["Credits consumed quickly", "Complex apps may need manual refinement", "Limited backend capabilities"] },
+  { name: "Lovable", slug: "lovable", tagline: "Build complete full-stack apps from a single prompt with database and auth included", taglineZh: "一句话生成完整全栈应用，含数据库和认证", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "app-building", trending: true, trendingScore: 86, websiteUrl: "https://lovable.dev", officialDocsUrl: "https://docs.lovable.dev", officialTutorialUrl: "https://docs.lovable.dev/getting-started", pros: ["Complete full-stack generation", "Built-in Supabase integration", "Auth & database auto-provisioned", "Best for non-technical users"], cons: ["Less control over code structure", "Supabase lock-in", "Complex customization limited"] },
+  { name: "v0", slug: "v0", tagline: "Vercel's AI tool for generating beautiful React and Tailwind CSS components", taglineZh: "Vercel的AI工具，生成精美的React和Tailwind组件", pricing: "freemium" as const, difficulty: "intermediate" as const, difficultyTier: "builder" as const, category: "app-building", trending: true, trendingScore: 82, websiteUrl: "https://v0.dev", officialDocsUrl: "https://v0.dev/docs", officialTutorialUrl: "https://v0.dev/docs", pros: ["Highest quality React components", "Figma-to-code pipeline", "Tailwind CSS native", "Seamless Vercel deployment"], cons: ["Components only, not full apps", "No database or backend", "Limited to React ecosystem"] },
+  { name: "Windsurf", slug: "windsurf", tagline: "The #1 ranked AI IDE with Arena Mode and multi-agent parallel editing", taglineZh: "排名第一的AI IDE，支持Arena模式和多Agent并行编辑", pricing: "freemium" as const, difficulty: "intermediate" as const, difficultyTier: "builder" as const, category: "coding", trending: true, trendingScore: 94, websiteUrl: "https://codeium.com/windsurf", officialDocsUrl: "https://docs.codeium.com/windsurf", officialTutorialUrl: "https://docs.codeium.com/windsurf/getting-started", pros: ["#1 AI IDE ranking 2026", "Arena Mode for model comparison", "8 parallel agents", "Generous free tier"], cons: ["Resource intensive", "Newer ecosystem than VS Code", "Some features in beta"] },
+  // Chatbots
+  { name: "Grok", slug: "grok", tagline: "xAI's AI assistant with real-time internet access and X (Twitter) integration", taglineZh: "xAI的AI助手，实时联网和X(Twitter)深度整合", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "chatbots", trending: true, trendingScore: 83, websiteUrl: "https://grok.x.ai", officialDocsUrl: "https://docs.x.ai", officialTutorialUrl: "https://docs.x.ai/docs/quickstart", pros: ["SWE-bench #1 score (75%)", "Real-time internet access", "X/Twitter data integration", "Uncensored responses"], cons: ["X Premium required for full access", "Smaller ecosystem", "Bias from X data"] },
+  // Video
+  { name: "Sora", slug: "sora", tagline: "OpenAI's text-to-video model generating high-quality 60-second videos", taglineZh: "OpenAI的文生视频模型，生成高质量60秒视频", pricing: "paid" as const, difficulty: "intermediate" as const, difficultyTier: "builder" as const, category: "video", trending: true, trendingScore: 87, websiteUrl: "https://sora.com", officialDocsUrl: "https://help.openai.com/en/collections/sora", officialTutorialUrl: "https://help.openai.com/en/collections/sora", pros: ["Industry-leading video quality", "60-second generation", "Understands physics & motion", "OpenAI ecosystem"], cons: ["Expensive credits", "Long generation times", "Content policy restrictions", "Limited editing control"] },
+  { name: "Kling", slug: "kling", tagline: "China's leading AI video generator rivaling Sora in quality", taglineZh: "中国领先的AI视频生成器，质量媲美Sora", pricing: "freemium" as const, difficulty: "intermediate" as const, difficultyTier: "builder" as const, category: "video", trending: true, trendingScore: 76, websiteUrl: "https://klingai.com", officialDocsUrl: "https://klingai.com/docs", officialTutorialUrl: "https://klingai.com/docs", pros: ["High quality video generation", "Strong in Chinese content", "Competitive pricing", "Good motion understanding"], cons: ["Limited outside China", "English documentation sparse", "Fewer integrations"] },
+  { name: "Pika", slug: "pika", tagline: "Simple and intuitive AI video editor for quick creative video content", taglineZh: "简单直观的AI视频编辑器，快速创作视频内容", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "video", trending: false, trendingScore: 62, websiteUrl: "https://pika.art", officialDocsUrl: "https://pika.art/blog", officialTutorialUrl: "https://pika.art/blog", pros: ["Very easy to use", "Quick video generation", "Fun creative effects", "Good for social media"], cons: ["Lower quality than Sora", "Limited video length", "Fewer customization options"] },
+  // Image Generation
+  { name: "Ideogram", slug: "ideogram", tagline: "AI image generator with the best text rendering in images", taglineZh: "AI图像生成器，图像中文字渲染效果最佳", pricing: "freemium" as const, difficulty: "intermediate" as const, difficultyTier: "builder" as const, category: "image-generation", trending: true, trendingScore: 74, websiteUrl: "https://ideogram.ai", officialDocsUrl: "https://docs.ideogram.ai", officialTutorialUrl: "https://docs.ideogram.ai", pros: ["Best text-in-image rendering", "Great for logos & posters", "Consistent style control", "Good free tier"], cons: ["Fewer artistic styles than Midjourney", "Smaller community", "API still maturing"] },
+  // Business
+  { name: "Napkin AI", slug: "napkin-ai", tagline: "Transform text into infographics, flowcharts, and visual diagrams instantly", taglineZh: "将文本即时转换为信息图、流程图和可视化图表", pricing: "freemium" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "business", trending: true, trendingScore: 65, websiteUrl: "https://napkin.ai", officialDocsUrl: "https://napkin.ai/help", officialTutorialUrl: "https://napkin.ai/help", pros: ["Text to infographic instantly", "Beautiful default designs", "Great for presentations", "Easy to customize"], cons: ["Limited diagram types", "Export format restrictions", "Pro features costly"] },
+  // Education
+  { name: "NotebookLM", slug: "notebooklm", tagline: "Google's AI research assistant that generates podcasts and summaries from your documents", taglineZh: "Google的AI研究助手，从文档自动生成播客和摘要", pricing: "free" as const, difficulty: "beginner" as const, difficultyTier: "starter" as const, category: "education", trending: true, trendingScore: 73, websiteUrl: "https://notebooklm.google.com", officialDocsUrl: "https://support.google.com/notebooklm", officialTutorialUrl: "https://support.google.com/notebooklm", pros: ["Free with Google account", "Audio podcast generation", "Multi-document analysis", "Grounded in your sources"], cons: ["Limited to uploaded docs", "Google ecosystem only", "No real-time data"] },
 ];
 
 const tutorialsData = [
@@ -136,6 +158,51 @@ const tutorialsData = [
       { blockType: "textStep", title: "Multi-File Editing", content: null },
     ],
   },
+  {
+    title: "Getting Started with OpenClaw AI Agent",
+    slug: "getting-started-openclaw",
+    toolSlug: "openclaw",
+    difficulty: "intermediate" as const,
+    estimatedMinutes: 20,
+    description: "Learn what AI Agents are, how to set up OpenClaw, connect it to messaging platforms, and execute your first autonomous tasks safely.",
+    learningObjectives: [
+      "Understand the difference between AI tools and AI agents",
+      "Set up OpenClaw on an isolated machine",
+      "Connect OpenClaw to WhatsApp or Slack",
+      "Design effective agent task instructions",
+      "Apply security best practices for AI agents",
+    ],
+    steps: [
+      { blockType: "textStep", title: "What is an AI Agent?", content: null },
+      { blockType: "textStep", title: "AI Tools vs AI Agents vs AIOS", content: null },
+      { blockType: "textStep", title: "Installing OpenClaw", content: null },
+      { blockType: "interactiveStep", title: "Practice: Design an Agent Task", type: "prompt", promptTemplate: "Task: Monitor my project's GitHub repository for new issues labeled 'bug'. For each new bug issue:\n1. Read the issue description\n2. Search the codebase for related files\n3. Create a summary of potential root causes\n4. Post a comment on the issue with your analysis", expectedOutput: "A well-structured agent task with clear steps, success criteria, and safety boundaries", hints: [{ hint: "Always specify what the agent should NOT do" }, { hint: "Include a human approval step for destructive actions" }, { hint: "Define clear boundaries for file access" }] },
+      { blockType: "tipStep", type: "warning", content: null },
+      { blockType: "textStep", title: "Security Best Practices", content: null },
+    ],
+  },
+  {
+    title: "Build Your First App with Bolt.new",
+    slug: "build-app-bolt-new",
+    toolSlug: "bolt-new",
+    difficulty: "beginner" as const,
+    estimatedMinutes: 15,
+    description: "Learn to build a complete web application in your browser using Bolt.new's AI-powered development platform - no local setup required.",
+    learningObjectives: [
+      "Understand what Vibe Coding is",
+      "Create a project in Bolt.new",
+      "Describe features in natural language",
+      "Preview and iterate on your app",
+      "Deploy your app to the web",
+    ],
+    steps: [
+      { blockType: "textStep", title: "What is Vibe Coding?", content: null },
+      { blockType: "textStep", title: "Creating Your First Project", content: null },
+      { blockType: "interactiveStep", title: "Practice: Describe Your App", type: "prompt", promptTemplate: "Build me a personal task manager app with:\n- A clean, modern UI with a sidebar navigation\n- Ability to create, edit, and delete tasks\n- Task categories (Work, Personal, Learning)\n- Due dates and priority levels (Low, Medium, High)\n- A dashboard showing today's tasks and overdue items\n\nUse React, Tailwind CSS, and local storage for data.", expectedOutput: "A detailed app description with specific features, UI preferences, and tech stack", hints: [{ hint: "Be specific about the UI style and layout" }, { hint: "Mention the tech stack you want to use" }, { hint: "Describe the data model implicitly through features" }] },
+      { blockType: "textStep", title: "Iterating and Refining", content: null },
+      { blockType: "textStep", title: "Deploying Your App", content: null },
+    ],
+  },
 ];
 
 const workflowsData = [
@@ -188,6 +255,36 @@ const workflowsData = [
     toolSlugs: ["cursor", "chatgpt", "gamma", "canva-ai", "zapier-ai"],
     difficulty: "intermediate" as const,
     estimatedSetupMinutes: 30,
+  },
+  {
+    name: "Vibe Coding Stack",
+    slug: "vibe-coding-stack",
+    description: "Build full-stack apps without writing code: generate UIs, wire up backends, and deploy - all from natural language prompts.",
+    targetRoles: ["entrepreneur", "designer", "product-manager"],
+    targetGoals: ["coding", "design", "business"],
+    toolSlugs: ["bolt-new", "lovable", "v0", "cursor"],
+    difficulty: "beginner" as const,
+    estimatedSetupMinutes: 10,
+  },
+  {
+    name: "AI Agent Automation Suite",
+    slug: "ai-agent-automation",
+    description: "Set up autonomous AI agents to handle repetitive tasks: file management, email processing, code reviews, and workflow orchestration.",
+    targetRoles: ["developer", "entrepreneur"],
+    targetGoals: ["automation", "coding"],
+    toolSlugs: ["openclaw", "zapier-ai", "make", "claude-code"],
+    difficulty: "intermediate" as const,
+    estimatedSetupMinutes: 30,
+  },
+  {
+    name: "Video Content Pipeline",
+    slug: "video-content-pipeline",
+    description: "End-to-end AI video production: generate videos from text, add voiceovers, and create professional content at scale.",
+    targetRoles: ["content-creator", "marketer"],
+    targetGoals: ["content-creation", "marketing"],
+    toolSlugs: ["sora", "runway-ml", "elevenlabs", "canva-ai"],
+    difficulty: "intermediate" as const,
+    estimatedSetupMinutes: 25,
   },
 ];
 

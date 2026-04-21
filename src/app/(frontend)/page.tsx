@@ -19,6 +19,8 @@ import {
   Rocket,
   Wrench,
   Terminal,
+  Blocks,
+  Cpu,
 } from "lucide-react";
 import { useTranslation } from "@/i18n/LanguageContext";
 
@@ -33,6 +35,8 @@ const categories = [
   { slug: "automation", icon: Bot, color: "bg-teal-500" },
   { slug: "business", icon: Briefcase, color: "bg-amber-500" },
   { slug: "education", icon: GraduationCap, color: "bg-cyan-500" },
+  { slug: "ai-agents", icon: Cpu, color: "bg-violet-500" },
+  { slug: "app-building", icon: Blocks, color: "bg-sky-500" },
 ];
 
 const difficultyTiers = [
